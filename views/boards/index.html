@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+	<div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <!-- Form -->
+            <form class="form-example" action="/boards" method="POST">
+                <h1>Add School Board</h1>
+                <p class="description">Enter school board details</p>
+                {% autoescape %}
+                {{ _csrfField|raw }}
+                {% endautoescape %}
+                <!-- Input fields -->
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="name" class="form-control name" id="name" placeholder="Name..." name="name">
+                </div>
+                <div class="form-group">
+                    <label for="type">Type:</label>
+                    <select id="type" name="type" class="form-control">
+                        <option value="CSM" selected>CSM</option>
+                        <option value="CSMB">CSMB</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-customized">Add</button>
+                <!-- End input fields -->
+            </form>
+            <!-- Form end -->
+        </div>
+    </div>
+    
+    <br><br>
+    
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <h1>School Boards</h1>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">School Board Name</th>
+                    <th scope="col">School Board Type</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for board in boards %}
+                  <tr>
+                    <th scope="row">{{board.id}}</th>
+                    <td>{{board.name}}</td>
+                    <td>{{board.type}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

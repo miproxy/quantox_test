@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ _csrfToken }}" />
+
+    <title>SCHOOL BOARD TEST</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" href="{{ _url_ }}img/favicon.ico" type="image/x-icon" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ _url_ }}css/bootstrap.min.css">
+    <link href="{{ _url_ }}css/app.css" rel="stylesheet">
+</head>
+<body>
+    {% include '_includes/header.html' %}
+    <div class="container-fluid">
+        {% block content %} {% endblock content %}
+    </div>
+    {% include '_includes/footer.html' %}
+
+	<script src="{{ _url_ }}js/jquery-3.3.1.min.js"></script>
+    <script src="{{ _url_ }}js/bootstrap.bundle.min.js"></script>
+	<script>
+        var url = "{{ _url_ }}";
+    </script>
+    <script src="{{ _url_ }}js/app.min.js"></script>
+</body>
+</html>

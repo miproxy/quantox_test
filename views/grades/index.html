@@ -1,0 +1,53 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+	<div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <!-- Form -->
+            <form class="form-example" action="/grades" method="POST">
+                <h3>Student: {{student.name}}</h3>
+                <p class="description">Add grade</p>
+                {% autoescape %}
+                {{ _csrfField|raw }}
+                {% endautoescape %}
+                <input type="hidden" value="{{student.id}}" name="id_student">
+                <!-- Input fields -->
+                <div class="form-group">
+                    <label for="value">Value:</label>
+                    <input type="number" class="form-control name" id="value" placeholder="Value..." name="value">
+                </div>
+                <button type="submit" class="btn btn-primary btn-customized">Add</button>
+                <!-- End input fields -->
+            </form>
+            <!-- Form end -->
+        </div>
+    </div>
+    
+    <br><br>
+    
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <h1>Student Grades</h1>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Grade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for grade in grades %}
+                  <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{grade.value}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+#1) redirect the client from "/index.php/foo/bar" to "/foo/bar"
+RewriteCond %{THE_REQUEST} /index\.php/(.+)\sHTTP [NC]
+RewriteRule ^ /%1 [NE,L,R]
+
+#2)internally map "/foo/bar" to "/index.php/foo/bar"
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ /index.php/$1 [L]
+#RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+
+Options -Indexes
+#IndexIgnore *
+
+RewriteCond %{REQUEST_URI} \.(doc|zip|pdf|php|sql)$ [NC]
+RewriteRule ^(.*)$ index.php?filename=$1 [L]
+
+#RewriteRule ^(views) - [F,L,NC]
+
+DirectoryIndex index.php

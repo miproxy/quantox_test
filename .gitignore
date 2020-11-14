@@ -1,0 +1,7 @@
+/.vscode
+/vendor
+/nbproject
+/views/_cache
+/storage/logs/log.txt
+npm-debug.log
+yarn-error.log

@@ -1,0 +1,38 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+	<div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">School Board Name</th>
+                    <th scope="col">School Board Type</th>
+                    <th scope="col">Grades</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for student in students %}
+                  <tr>
+                    <th scope="row">{{student.id}}</th>
+                    <td>
+                        <a href="/students/{{student.id}}">{{student.name}}</a>
+                    </td>
+                    <td>{{student.school_board_name}}</td>
+                    <td>{{student.school_board_type}}</td>
+                    <td>
+                      <a href="/students/{{student.id}}/grades">Go</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
